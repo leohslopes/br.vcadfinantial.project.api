@@ -1,0 +1,6 @@
+@br.vcadfinantial.project.api_HostAddress = http://localhost:5190
+
+GET {{br.vcadfinantial.project.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
