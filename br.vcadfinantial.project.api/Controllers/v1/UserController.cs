@@ -95,7 +95,7 @@ namespace br.vcadfinantial.project.api.Controllers.v1
                     return BadRequest("O ID do usuário não corresponde ao ID fornecido.");
                 }
 
-                var dto = new UserDTO(requestModel.Id,requestModel.FullName, requestModel.Gender, requestModel.Email, requestModel.Password, requestModel.Photo, DateTime.UtcNow);
+                var dto = new UserDTO(requestModel.Id, requestModel.FullName, requestModel.Gender, requestModel.Email, requestModel.Password, requestModel.Photo, DateTime.UtcNow);
                 var resultAsync = await _userService.UpdateUser(dto);
 
                 if (!resultAsync)

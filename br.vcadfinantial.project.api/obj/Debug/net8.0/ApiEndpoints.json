@@ -72,6 +72,32 @@
     ]
   },
   {
+    "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.ReportLogController",
+    "Method": "Download",
+    "RelativePath": "api/v1/ReportLog/filter-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MonthKey",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.UserController",
     "Method": "Update",
     "RelativePath": "api/v1/User/{id}",

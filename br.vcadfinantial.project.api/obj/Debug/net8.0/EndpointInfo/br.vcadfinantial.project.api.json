@@ -126,6 +126,45 @@
         }
       }
     },
+    "/api/v1/ReportLog/filter-report": {
+      "get": {
+        "tags": [
+          "ReportLog"
+        ],
+        "parameters": [
+          {
+            "name": "MonthKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/User/Register": {
       "post": {
         "tags": [
