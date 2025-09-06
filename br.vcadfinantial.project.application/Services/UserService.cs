@@ -118,6 +118,43 @@ namespace br.vcadfinantial.project.application.Services
 
         }
 
+        public async Task<bool> UpdateUser(UserDTO dto)
+        {
+            bool result = false;
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var passwordHasher = new PasswordHasher<UserDTO>();
+
+                var user = new User
+                {
+                    ID = dto.Id,
+                    FullName = dto.FullName,
+                    Gender = dto.Gender,
+                    Email = dto.Email,
+                    Password = passwordHasher.HashPassword(dto, dto.Password),
+                    Photo = await GetImageBytes(dto.Photo),
+                    CreateDate = dto.CreateDate
+                };
+
+                _logger.LogInformation($"Atualizando o usuário {dto.FullName.ToUpper().Trim()} no banco de dados.");
+                await _userRepository.UpdateAsync(user);
+                _logger.LogInformation($"Registro do usuário {dto.FullName.ToUpper().Trim()} atualizado com sucesso no banco de dados.");
+
+                await transaction.CommitAsync();
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError($"[CreateUser] - Erro ao cadastrar o usuário: {ex.Message}");
+                throw;
+            }
+
+            return result;
+        }
+
         private static async Task<byte[]?> GetImageBytes(IFormFile? picture)
         {
             byte[]? imgBytes = null;

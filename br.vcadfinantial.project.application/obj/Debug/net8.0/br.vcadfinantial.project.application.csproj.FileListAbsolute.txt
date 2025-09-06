@@ -17,3 +17,4 @@ C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.application\obj\Deb
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.application\obj\Debug\net8.0\br.vcadfinantial.project.application.genruntimeconfig.cache
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.application\bin\Debug\net8.0\br.vcadfinantial.project.repository.dll
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.application\bin\Debug\net8.0\br.vcadfinantial.project.repository.pdb
+C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.application\obj\Debug\net8.0\br.vcadfinantial.project.application.sourcelink.json

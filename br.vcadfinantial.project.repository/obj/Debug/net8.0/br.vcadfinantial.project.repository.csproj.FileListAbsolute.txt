@@ -15,3 +15,4 @@ C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.repository\bin\Debu
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.repository\obj\Debug\net8.0\br.vcadfinantial.project.repository.csproj.AssemblyReference.cache
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.repository\obj\Debug\net8.0\br.vcadf.5C43A01B.Up2Date
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.repository\obj\Debug\net8.0\br.vcadfinantial.project.repository.genruntimeconfig.cache
+C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.repository\obj\Debug\net8.0\br.vcadfinantial.project.repository.sourcelink.json

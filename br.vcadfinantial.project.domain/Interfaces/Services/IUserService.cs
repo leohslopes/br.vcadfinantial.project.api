@@ -13,5 +13,7 @@ namespace br.vcadfinantial.project.domain.Interfaces.Services
         Task<bool> CreateUser(UserDTO dto);
 
         Task<UserSession> GetToken(LoginDTO dto);
+
+        Task<bool> UpdateUser(UserDTO dto);
     }
 }

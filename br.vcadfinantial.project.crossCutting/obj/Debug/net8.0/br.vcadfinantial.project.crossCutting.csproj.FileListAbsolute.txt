@@ -19,3 +19,4 @@ C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.crossCutting\bin\De
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.crossCutting\obj\Debug\net8.0\br.vcadfinantial.project.crossCutting.csproj.AssemblyReference.cache
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.crossCutting\obj\Debug\net8.0\br.vcadf.E3854172.Up2Date
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.crossCutting\obj\Debug\net8.0\br.vcadfinantial.project.crossCutting.genruntimeconfig.cache
+C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.crossCutting\obj\Debug\net8.0\br.vcadfinantial.project.crossCutting.sourcelink.json

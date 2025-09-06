@@ -169,3 +169,4 @@ C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\bin\Debug\net8.
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\obj\Debug\net8.0\br.vcadfinantial.project.api.sourcelink.json

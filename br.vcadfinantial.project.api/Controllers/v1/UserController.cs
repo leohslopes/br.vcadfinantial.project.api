@@ -30,7 +30,7 @@ namespace br.vcadfinantial.project.api.Controllers.v1
         {
             try
             {
-                var dto = new UserDTO(requestModel.FullName, requestModel.Gender, requestModel.Email, requestModel.Password, requestModel.Photo, DateTime.UtcNow);
+                var dto = new UserDTO(0, requestModel.FullName, requestModel.Gender, requestModel.Email, requestModel.Password, requestModel.Photo, DateTime.UtcNow);
                 var resultAsync = await _userService.CreateUser(dto);
 
                 if (!resultAsync)
@@ -83,5 +83,45 @@ namespace br.vcadfinantial.project.api.Controllers.v1
                 return Ok(rt);
             }
         }
+
+        [HttpPut("{id}"), MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Update(int id, [FromForm] UpdateUserRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        {
+            try
+            {
+                if (!id.Equals(requestModel.Id))
+                {
+                    return BadRequest("O ID do usuário não corresponde ao ID fornecido.");
+                }
+
+                var dto = new UserDTO(requestModel.Id,requestModel.FullName, requestModel.Gender, requestModel.Email, requestModel.Password, requestModel.Photo, DateTime.UtcNow);
+                var resultAsync = await _userService.UpdateUser(dto);
+
+                if (!resultAsync)
+                {
+                    return BadRequest(new StatusCode200TypedResponseModel<bool>()
+                    {
+                        Success = resultAsync
+                    });
+                }
+
+                return Ok(new StatusCode200TypedResponseModel<bool>()
+                {
+                    Success = resultAsync
+                });
+            }
+            catch (Exception ex)
+            {
+                var rt = new StatusCode200StandardResponseModel
+                {
+                    Success = false
+                };
+                rt.Errors.Add(new KeyValuePair<string, string>("error", ex.Message));
+                return Ok(rt);
+            }
+        }
+
+
     }
 }
