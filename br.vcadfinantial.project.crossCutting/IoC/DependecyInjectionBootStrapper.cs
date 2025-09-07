@@ -35,6 +35,7 @@ namespace br.vcadfinantial.project.crossCutting.IoC
             services.AddScoped<IPasswordHasher<UserDTO>, PasswordHasher<UserDTO>>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IReportLogService, ReportLogService>();
+            services.AddScoped<IDashboardService, DashboardService>();
         }
     }
 }

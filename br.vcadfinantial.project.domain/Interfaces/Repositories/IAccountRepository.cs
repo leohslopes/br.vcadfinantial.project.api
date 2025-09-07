@@ -1,10 +1,13 @@
-﻿using br.vcadfinantial.project.domain.Entities.Tables;
+﻿using br.vcadfinantial.project.domain.Agreggate;
+using br.vcadfinantial.project.domain.Entities.Tables;
 
 
 namespace br.vcadfinantial.project.domain.Interfaces.Repositories
 {
     public interface IAccountRepository : IBaseRepository<Account>
     {
+        Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccounts();
 
+        Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalances();
     }
 }

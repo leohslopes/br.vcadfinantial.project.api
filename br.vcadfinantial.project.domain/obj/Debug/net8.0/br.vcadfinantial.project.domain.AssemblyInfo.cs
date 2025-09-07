@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("br.vcadfinantial.project.domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8f425bd3fa9de6dd32b10834c9e96160dd819fe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f500733000da8c6b57ad289b809d1b43c10826f")]
 [assembly: System.Reflection.AssemblyProductAttribute("br.vcadfinantial.project.domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("br.vcadfinantial.project.domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

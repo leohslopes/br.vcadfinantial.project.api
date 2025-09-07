@@ -72,6 +72,46 @@
     ]
   },
   {
+    "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.DashboardController",
+    "Method": "GetAccount",
+    "RelativePath": "api/v1/Dashboard/GetAccount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.DashboardController",
+    "Method": "GetBalance",
+    "RelativePath": "api/v1/Dashboard/GetBalance",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.ReportLogController",
     "Method": "Download",
     "RelativePath": "api/v1/ReportLog/filter-report",

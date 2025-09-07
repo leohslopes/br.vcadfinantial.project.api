@@ -13,5 +13,7 @@ namespace br.vcadfinantial.project.domain.Interfaces.Services
         Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll();
 
         Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(AccountDTO dto);
+
     }
+
 }
