@@ -39,34 +39,38 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                         .HasColumnType("decimal(65,30)")
                         .HasColumnName("among");
 
-                    b.Property<int>("DocumentCode")
+                    b.Property<int>("IdDocument")
                         .HasColumnType("int")
-                        .HasColumnName("document_code");
+                        .HasColumnName("id_document");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DocumentCode");
+                    b.HasIndex("IdDocument");
 
                     b.ToTable("b_account");
                 });
 
             modelBuilder.Entity("br.vcadfinantial.project.domain.Entities.Tables.Document", b =>
                 {
-                    b.Property<int>("DocumentCode")
+                    b.Property<int>("IdDocument")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("document_code");
+                        .HasColumnName("id_document");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("DocumentCode"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("IdDocument"));
 
                     b.Property<bool>("Active")
                         .HasColumnType("tinyint(1)")
                         .HasColumnName("active");
 
+                    b.Property<int>("DocumentCode")
+                        .HasColumnType("int")
+                        .HasColumnName("document_code");
+
                     b.Property<string>("FileName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("file_name");
 
                     b.Property<string>("MounthKey")
@@ -87,9 +91,29 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                         .HasColumnType("varchar(2)")
                         .HasColumnName("shipment_type");
 
-                    b.HasKey("DocumentCode");
+                    b.HasKey("IdDocument");
 
                     b.ToTable("b_document");
+                });
+
+            modelBuilder.Entity("br.vcadfinantial.project.domain.Entities.Tables.PasswordReset", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("email");
+
+                    b.Property<DateTime>("DateExpire")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("date_expire");
+
+                    b.Property<string>("ResetCode")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("reset_code");
+
+                    b.HasKey("Email");
+
+                    b.ToTable("b_password_reset");
                 });
 
             modelBuilder.Entity("br.vcadfinantial.project.domain.Entities.Tables.User", b =>
@@ -146,7 +170,7 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                 {
                     b.HasOne("br.vcadfinantial.project.domain.Entities.Tables.Document", "Document")
                         .WithMany("Accounts")
-                        .HasForeignKey("DocumentCode")
+                        .HasForeignKey("IdDocument")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

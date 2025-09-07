@@ -17,15 +17,17 @@ namespace br.vcadfinantial.project.repository.Database
 
         public DbSet<User> User { get; set; }
 
+        public DbSet<PasswordReset> PasswordReset { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Document>()
-                .HasKey(d => d.DocumentCode);
+                .HasKey(d => d.IdDocument);
 
             modelBuilder.Entity<Document>()
                 .HasMany(d => d.Accounts)   
                 .WithOne(a => a.Document)   
-                .HasForeignKey(a => a.DocumentCode)
+                .HasForeignKey(a => a.IdDocument)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Account>()
@@ -38,6 +40,8 @@ namespace br.vcadfinantial.project.repository.Database
             modelBuilder.Entity<User>()
                 .Property(u => u.Photo)
                 .HasColumnType("MEDIUMBLOB");
+
+            modelBuilder.Entity<PasswordReset>().HasKey(p => p.Email);
 
             base.OnModelCreating(modelBuilder);
         }

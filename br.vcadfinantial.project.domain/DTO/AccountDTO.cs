@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace br.vcadfinantial.project.domain.DTO
 {
-   public record AccountDTO(long? AccountKey);
+   public record AccountDTO(long AccountKey);
 }

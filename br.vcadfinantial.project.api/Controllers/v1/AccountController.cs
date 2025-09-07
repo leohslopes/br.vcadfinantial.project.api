@@ -3,6 +3,7 @@ using br.vcadfinantial.project.api.Models.Responses;
 using br.vcadfinantial.project.domain.Agreggate;
 using br.vcadfinantial.project.domain.DTO;
 using br.vcadfinantial.project.domain.Entities.Archive;
+using br.vcadfinantial.project.domain.Exceptions;
 using br.vcadfinantial.project.domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,13 +25,13 @@ namespace br.vcadfinantial.project.api.Controllers.v1
             _archiveService = archiveService;
         }
 
-        [HttpPost("Import"), MapToApiVersion("1.0")]
+        [HttpPost("Import/{force:bool}"), MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Import([FromForm] ImportFileRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        public async Task<IActionResult> Import(bool force, [FromForm] ImportFileRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
         {
             try
             {
-                var dto = new DocumentDTO(requestModel.File);
+                var dto = new DocumentDTO(requestModel.File, force);
                 var resultAsync = await _archiveService.ImportFile(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<ResultSetImportArchive>()
@@ -38,6 +39,16 @@ namespace br.vcadfinantial.project.api.Controllers.v1
                     Success = true,
                     Data = resultAsync
                 });
+            }
+            catch (FileAlreadyExistsException ex)
+            {
+                var rt = new StatusCode200StandardResponseModel
+                {
+                    Success = false
+                };
+                rt.Errors.Add(new KeyValuePair<string, string>("error", ex.Message));
+
+                return Conflict(rt);
             }
             catch (Exception ex)
             {

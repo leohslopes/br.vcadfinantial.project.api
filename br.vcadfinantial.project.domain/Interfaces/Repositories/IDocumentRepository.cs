@@ -8,6 +8,10 @@ namespace br.vcadfinantial.project.domain.Interfaces.Repositories
     {
         Task InactivateDocumentsByMonth();
 
+        Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll();
+
+        Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(long accountKey);
+
         Task<IEnumerable<ReportLogInfoAgreggate>> GetReport(string mounthKey);
     }
 }

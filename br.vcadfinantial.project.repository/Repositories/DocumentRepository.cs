@@ -31,6 +31,44 @@ namespace br.vcadfinantial.project.repository.Repositories
             }
         }
 
+        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll()
+        {
+            IEnumerable<DocumentAccountInfoAgreggate> result;
+
+            result = await _context.Account
+                         .Where(x => x.Document.Active)
+                         .Select(y => new DocumentAccountInfoAgreggate
+                         {
+                             MounthKey = y.Document!.MounthKey,
+                             FileName = y.Document.FileName,
+                             OfficialNumber = y.Document.OfficialNumber,
+                             Among = y.Among,
+                             AccountKey = y.AccountKey
+                         })
+                         .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(long accountKey)
+        {
+            IEnumerable<DocumentAccountInfoAgreggate> result;
+
+            result = await _context.Account
+                         .Where(x => x.Document.Active && x.AccountKey.Equals(accountKey))
+                         .Select(y => new DocumentAccountInfoAgreggate
+                         {
+                             MounthKey = y.Document!.MounthKey,
+                             FileName = y.Document.FileName,
+                             OfficialNumber = y.Document.OfficialNumber,
+                             Among = y.Among,
+                             AccountKey = y.AccountKey
+                         })
+                         .ToListAsync();
+
+            return result;
+        }
+
         public async Task<IEnumerable<ReportLogInfoAgreggate>> GetReport(string mounthKey)
         {
             IEnumerable<ReportLogInfoAgreggate> result;

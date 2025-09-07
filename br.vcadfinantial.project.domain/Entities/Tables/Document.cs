@@ -6,8 +6,13 @@ namespace br.vcadfinantial.project.domain.Entities.Tables
     [Table("b_document")]
     public class Document
     {
+        [Column("id_document")]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IdDocument { get; set; }
+
         [Column("document_code")]
-        [Key]
+        [Required]
         public int DocumentCode { get; set; }
 
         [Column("official_number")]
@@ -27,7 +32,7 @@ namespace br.vcadfinantial.project.domain.Entities.Tables
 
         [Column("file_name")]
         [Required]
-        [MaxLength(30)]
+        [MaxLength(100)]
         public required string FileName { get; set; }
 
         [Column("active")]

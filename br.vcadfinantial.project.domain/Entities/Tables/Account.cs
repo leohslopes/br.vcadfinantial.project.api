@@ -12,9 +12,9 @@ namespace br.vcadfinantial.project.domain.Entities.Tables
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Column("document_code")]
+        [Column("id_document")]
         [Required]
-        public int DocumentCode { get; set; }
+        public int IdDocument { get; set; }
 
         [Column("account_key")]
         [Required]
@@ -24,7 +24,7 @@ namespace br.vcadfinantial.project.domain.Entities.Tables
         [Required]
         public decimal Among { get; set; }
 
-        [ForeignKey(nameof(DocumentCode))]
+        [ForeignKey(nameof(IdDocument))]
         public Document Document { get; set; } = null!;
     }
 }

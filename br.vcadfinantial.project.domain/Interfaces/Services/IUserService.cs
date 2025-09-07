@@ -15,5 +15,9 @@ namespace br.vcadfinantial.project.domain.Interfaces.Services
         Task<UserSession> GetToken(LoginDTO dto);
 
         Task<bool> UpdateUser(UserDTO dto);
+
+        Task<string> SendResetCode(PasswordResetDTO dto);
+
+        Task<bool> ConfirmPassword(ConfimPasswordDTO dto);
     }
 }

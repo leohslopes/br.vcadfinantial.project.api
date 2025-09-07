@@ -2,13 +2,12 @@
 using br.vcadfinantial.project.domain.DTO;
 using br.vcadfinantial.project.domain.Entities.Archive;
 using br.vcadfinantial.project.domain.Entities.Tables;
+using br.vcadfinantial.project.domain.Enumerations;
+using br.vcadfinantial.project.domain.Exceptions;
 using br.vcadfinantial.project.domain.Interfaces.Repositories;
 using br.vcadfinantial.project.domain.Interfaces.Services;
 using br.vcadfinantial.project.repository.Database;
 using ClosedXML.Excel;
-using CsvHelper;
-using CsvHelper.Configuration;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -42,10 +41,42 @@ namespace br.vcadfinantial.project.application.Services
             { 
                 var doc = XDocument.Load(stream);
 
+                _logger.LogInformation("Validando o layout do XML.");
+                var root = doc.Root;
+                if (root is null ||
+                    root.Attribute("codigoDocumento") is null ||
+                    root.Attribute("cnpj") is null ||
+                    root.Attribute("dataBase") is null ||
+                    root.Attribute("tipoRemessa") is null)
+                {
+                    throw new InvalidDataException("Layout inválido: atributos obrigatórios ausentes no nó raiz do XML.");
+                }
+
+                var contas = doc.Descendants("conta").ToList();
+                if (contas.Count == 0)
+                {
+                    throw new InvalidDataException("Layout inválido: nenhum nó <conta> encontrado no XML.");
+                }
+
+                foreach (var conta in contas)
+                {
+                    if (conta.Attribute("codigoConta") is null || conta.Attribute("saldo") is null)
+                    {
+                        throw new InvalidDataException("Layout inválido: cada nó <conta> deve conter os atributos 'codigoConta' e 'saldo'.");
+                    }
+                }
+
+                int documentCode = Convert.ToInt32((string)root.Attribute("codigoDocumento") ?? "0");
+                if (!documentCode.Equals(DocumentType.GeneralAccount.Id))
+                {
+                    throw new InvalidDataException($"Layout inválido: o tipo de documento {documentCode} não é suportado. Esperado: {DocumentType.GeneralAccount.Id}.");
+                }
+                _logger.LogInformation("Validação do layout no XML feita com sucesso.");
+
                 _logger.LogInformation("Consumindo o arquivo XML de contas.");
                 var document = new ImportDocument
                 {
-                    DocumentCode = Convert.ToInt32((string)doc.Root?.Attribute("codigoDocumento") ?? "0"),
+                    DocumentCode = documentCode,
                     OfficialNumber = (string)doc.Root?.Attribute("cnpj") ?? string.Empty,
                     MounthKey = (string)doc.Root?.Attribute("dataBase") ?? string.Empty,
                     ShipmentType = (string)doc.Root?.Attribute("tipoRemessa") ?? string.Empty,
@@ -56,11 +87,19 @@ namespace br.vcadfinantial.project.application.Services
                     })]
                 };
 
-                var existing = await _context.Document.FirstOrDefaultAsync();
-                if (existing != null && existing.MounthKey.Equals(document.MounthKey))
+                var existing = await _context.Document.FirstOrDefaultAsync(x => x.MounthKey.Equals(document.MounthKey) && x.Active);
+                if (existing != null && !dto.Overwrite)
                 {
                     _logger.LogWarning($"Já existe um arquivo vigente para o código base {existing.MounthKey}. Arquivo recebido: {existing.FileName}");
-                    throw new InvalidOperationException($"Já existe um arquivo vigente para o código base {existing.MounthKey}. Arquivo recebido: {existing.FileName}");
+                    throw new FileAlreadyExistsException(existing.MounthKey, existing.FileName);
+                }
+                else if(dto.Overwrite) 
+                {
+                    _logger.LogInformation($"Removendo o histórico do arquivo passado. Mês base{existing.MounthKey}");
+                    await _accountRepository.DeleteAsync(existing.IdDocument);
+                    await _documentRepository.DeleteAsync(existing.IdDocument);
+                    _logger.LogInformation($"Histórico do arquivo passado removido com sucesso. Mês base{existing.MounthKey}");
+
                 }
                 _logger.LogInformation("Consumo do arquivo XML de contas finalizado com sucesso.");
 
@@ -85,7 +124,7 @@ namespace br.vcadfinantial.project.application.Services
                 {
                     var item = new Account
                     {
-                        DocumentCode = tbDoc.DocumentCode,
+                        IdDocument = tbDoc.IdDocument,
                         AccountKey = account.AccountKey,
                         Among = account.Among,
                     };
@@ -120,17 +159,7 @@ namespace br.vcadfinantial.project.application.Services
 
             try
             {
-                result = await _context.Account
-                         .Where(x => x.Document.Active)
-                         .Select(y => new DocumentAccountInfoAgreggate
-                         {
-                             MounthKey = y.Document!.MounthKey,
-                             FileName = y.Document.FileName,
-                             OfficialNumber = y.Document.OfficialNumber,
-                             Among = y.Among,
-                             AccountKey = y.AccountKey
-                         })
-                         .ToListAsync();
+                result = await _documentRepository.GetAll();
             }
             catch (Exception ex)
             {
@@ -147,17 +176,7 @@ namespace br.vcadfinantial.project.application.Services
 
             try
             {
-                result = await _context.Account
-                         .Where(x => x.Document.Active && x.AccountKey.Equals(dto.AccountKey))
-                         .Select(y => new DocumentAccountInfoAgreggate
-                         {
-                             MounthKey = y.Document!.MounthKey,
-                             FileName = y.Document.FileName,
-                             OfficialNumber = y.Document.OfficialNumber,
-                             Among = y.Among,
-                             AccountKey = y.AccountKey
-                         })
-                         .ToListAsync();
+                result = await _documentRepository.GetByAccountKey(dto.AccountKey);
             }
             catch (Exception ex)
             {
@@ -168,7 +187,7 @@ namespace br.vcadfinantial.project.application.Services
             return result;
         }
 
-        private FileContentResult GenerateFinalResultsArchive(ImportDocument document, Document tbDoc)
+        private static FileContentResult GenerateFinalResultsArchive(ImportDocument document, Document tbDoc)
         {
             using var workbook = new XLWorkbook();
             var worksheet = workbook.Worksheets.Add("Resultado");
@@ -193,7 +212,7 @@ namespace br.vcadfinantial.project.application.Services
             }
 
             int totalRows = document.Accounts.Count + 1;
-            var tableRange = worksheet.Range(1, 1, totalRows, 7);
+            var tableRange = worksheet.Range(1, 1, totalRows, 6);
             var table = tableRange.CreateTable();
             table.Theme = XLTableTheme.TableStyleMedium9;
 

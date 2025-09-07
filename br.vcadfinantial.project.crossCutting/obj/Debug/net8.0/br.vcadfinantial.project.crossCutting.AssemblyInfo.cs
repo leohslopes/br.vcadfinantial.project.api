@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("br.vcadfinantial.project.crossCutting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f500733000da8c6b57ad289b809d1b43c10826f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+261c995a8ee04120bf371c3ce671cc49160c53d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("br.vcadfinantial.project.crossCutting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("br.vcadfinantial.project.crossCutting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

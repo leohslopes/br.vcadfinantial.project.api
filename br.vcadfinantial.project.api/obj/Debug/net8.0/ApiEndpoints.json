@@ -48,11 +48,16 @@
   {
     "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.AccountController",
     "Method": "Import",
-    "RelativePath": "api/v1/Account/Import",
+    "RelativePath": "api/v1/Account/Import/{force}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "force",
+        "Type": "System.Boolean",
+        "IsRequired": true
+      },
       {
         "Name": "File",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
@@ -179,6 +184,58 @@
         "Name": "Photo",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.UserController",
+    "Method": "Confirm",
+    "RelativePath": "api/v1/User/Confirm",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestModel",
+        "Type": "br.vcadfinantial.project.api.Models.Requests.ConfirmCodePasswordRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "br.vcadfinantial.project.api.Controllers.v1.UserController",
+    "Method": "Forgot",
+    "RelativePath": "api/v1/User/Forgot",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestModel",
+        "Type": "br.vcadfinantial.project.api.Models.Requests.ForgotEmailRequestModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

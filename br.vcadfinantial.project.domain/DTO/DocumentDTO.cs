@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace br.vcadfinantial.project.domain.DTO
 {
-   public record DocumentDTO(IFormFile? File);
+   public record DocumentDTO(IFormFile? File, bool Overwrite);
 }

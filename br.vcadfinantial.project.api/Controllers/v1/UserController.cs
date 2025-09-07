@@ -3,6 +3,7 @@ using br.vcadfinantial.project.api.Models.Responses;
 using br.vcadfinantial.project.domain.DTO;
 using br.vcadfinantial.project.domain.Entities.Login;
 using br.vcadfinantial.project.domain.Interfaces.Services;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Office2016.Excel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
@@ -97,6 +98,65 @@ namespace br.vcadfinantial.project.api.Controllers.v1
 
                 var dto = new UserDTO(requestModel.Id, requestModel.FullName, requestModel.Gender, requestModel.Email, requestModel.Password, requestModel.Photo, DateTime.UtcNow);
                 var resultAsync = await _userService.UpdateUser(dto);
+
+                if (!resultAsync)
+                {
+                    return BadRequest(new StatusCode200TypedResponseModel<bool>()
+                    {
+                        Success = resultAsync
+                    });
+                }
+
+                return Ok(new StatusCode200TypedResponseModel<bool>()
+                {
+                    Success = resultAsync
+                });
+            }
+            catch (Exception ex)
+            {
+                var rt = new StatusCode200StandardResponseModel
+                {
+                    Success = false
+                };
+                rt.Errors.Add(new KeyValuePair<string, string>("error", ex.Message));
+                return Ok(rt);
+            }
+        }
+
+        [HttpPost("Forgot"), MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Forgot([FromBody] ForgotEmailRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        {
+            try
+            {
+                var dto = new PasswordResetDTO(requestModel.Email);
+                var resultAsync = await _userService.SendResetCode(dto);
+
+                return Ok(new StatusCode200TypedResponseModel<string>()
+                {
+                    Success = true,
+                    Data = resultAsync
+                });
+            }
+            catch (Exception ex)
+            {
+                var rt = new StatusCode200StandardResponseModel
+                {
+                    Success = false
+                };
+                rt.Errors.Add(new KeyValuePair<string, string>("error", ex.Message));
+                return Ok(rt);
+            }
+        }
+
+        [HttpPut("Confirm"), MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Confirm([FromBody] ConfirmCodePasswordRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        {
+            try
+            {
+                var dto = new ConfimPasswordDTO(requestModel.Email, requestModel.Password, requestModel.Code);
+                var resultAsync = await _userService.ConfirmPassword(dto);
 
                 if (!resultAsync)
                 {

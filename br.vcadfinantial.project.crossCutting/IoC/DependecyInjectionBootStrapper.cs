@@ -26,6 +26,7 @@ namespace br.vcadfinantial.project.crossCutting.IoC
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IDocumentRepository, DocumentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPasswordResetRepository, PasswordResetRepository>();
         }
 
         private static void RegisterServices(IServiceCollection services)
@@ -36,6 +37,7 @@ namespace br.vcadfinantial.project.crossCutting.IoC
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IReportLogService, ReportLogService>();
             services.AddScoped<IDashboardService, DashboardService>();
+            services.AddScoped<IPasswordHasher<ConfimPasswordDTO>, PasswordHasher<ConfimPasswordDTO>>();
         }
     }
 }
