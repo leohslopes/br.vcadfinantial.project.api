@@ -207,7 +207,18 @@ namespace br.vcadfinantial.project.application.Services
                     ResetCode = code,
                     DateExpire = DateTime.UtcNow.AddMinutes(15)
                 };
-                await _passwordResetRepository.AddAsync(passwordReset);
+
+                var existingCode = await _context.PasswordReset.FirstOrDefaultAsync(x => x.Email.Equals(dto.Email));
+                if (existingCode == null)
+                {
+                    await _passwordResetRepository.AddAsync(passwordReset);
+                }
+                else
+                {
+                    existingCode.ResetCode = code;
+                    existingCode.DateExpire = DateTime.UtcNow.AddMinutes(15);
+                    await _passwordResetRepository.UpdateAsync(existingCode);
+                }
                 _logger.LogInformation($"Código do e-mail {dto.Email} inserido na base com sucesso.");
 
                 result = code;
@@ -235,28 +246,11 @@ namespace br.vcadfinantial.project.application.Services
                     throw new ApplicationException($"E-mail não encontrado.");
                 }
 
-                var passwordReset = await _context.PasswordReset.Where(x => x.Email.Equals(dto.Email)).FirstOrDefaultAsync();
-
-                if (passwordReset != null && (!passwordReset.ResetCode.Equals(dto.Code) || passwordReset.DateExpire < DateTime.UtcNow))
-                {
-                    _logger.LogWarning("Código inválido ou expirado.");
-                    throw new ApplicationException($"Código inválido ou expirado.");
-                }
-
                 var passwordHasher = new PasswordHasher<ConfimPasswordDTO>();
-                var user = new User
-                {
-                    ID = existingUser.ID,
-                    FullName = existingUser.FullName,
-                    Gender = existingUser.Gender,
-                    Email = existingUser.Email,
-                    Password = passwordHasher.HashPassword(dto, dto.Password),
-                    Photo = existingUser.Photo,
-                    CreateDate = DateTime.UtcNow
-                };
+                existingUser.Password = passwordHasher.HashPassword(dto, dto.Password);
 
                 _logger.LogInformation($"Atualizando a senha do usuário {existingUser.FullName.ToUpper().Trim()} no banco de dados.");
-                await _userRepository.UpdateAsync(user);
+                await _userRepository.UpdateAsync(existingUser); 
                 _logger.LogInformation($"Atualização da senha {existingUser.FullName.ToUpper().Trim()} feito com sucesso no banco de dados.");
 
                 await transaction.CommitAsync();
