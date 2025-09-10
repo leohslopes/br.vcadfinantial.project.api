@@ -31,6 +31,11 @@ namespace br.vcadfinantial.project.api.Controllers.v1
         {
             try
             {
+                if(requestModel.File == null)
+                {
+                    BadRequest("Arquivo não encontrado.");
+                }
+
                 var dto = new DocumentDTO(requestModel.File, force);
                 var resultAsync = await _archiveService.ImportFile(dto);
 

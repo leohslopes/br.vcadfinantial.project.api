@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\DEV\\br.vcadfinantial.project.api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|solutionrelative:br.vcadfinantial.project.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C25BBD5-EACB-417C-BC25-C264AC9A8470}|br.vcadfinantial.project.tests\\br.vcadfinantial.project.tests.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\reportlogcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25BBD5-EACB-417C-BC25-C264AC9A8470}|br.vcadfinantial.project.tests\\br.vcadfinantial.project.tests.csproj|solutionrelative:br.vcadfinantial.project.tests\\reportlogcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\controllers\\v1\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|solutionrelative:br.vcadfinantial.project.api\\controllers\\v1\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1C25BBD5-EACB-417C-BC25-C264AC9A8470}|br.vcadfinantial.project.tests\\br.vcadfinantial.project.tests.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\usercontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25BBD5-EACB-417C-BC25-C264AC9A8470}|br.vcadfinantial.project.tests\\br.vcadfinantial.project.tests.csproj|solutionrelative:br.vcadfinantial.project.tests\\usercontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25BBD5-EACB-417C-BC25-C264AC9A8470}|br.vcadfinantial.project.tests\\br.vcadfinantial.project.tests.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25BBD5-EACB-417C-BC25-C264AC9A8470}|br.vcadfinantial.project.tests\\br.vcadfinantial.project.tests.csproj|solutionrelative:br.vcadfinantial.project.tests\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\controllers\\v1\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|solutionrelative:br.vcadfinantial.project.api\\controllers\\v1\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|solutionrelative:br.vcadfinantial.project.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\models\\requests\\confirmcodepasswordrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,7 +46,59 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportLogControllerTests.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\ReportLogControllerTests.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.tests\\ReportLogControllerTests.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\ReportLogControllerTests.cs*",
+              "RelativeToolTip": "br.vcadfinantial.project.tests\\ReportLogControllerTests.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T23:53:54.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserControllerTests.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\UserControllerTests.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.tests\\UserControllerTests.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\UserControllerTests.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.tests\\UserControllerTests.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA1wJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T23:43:09.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AccountControllerTests.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\AccountControllerTests.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.tests\\AccountControllerTests.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.tests\\AccountControllerTests.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.tests\\AccountControllerTests.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T23:21:36.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAqwBIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T22:41:44.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ConfirmCodePasswordRequestModel.cs",
               "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Models\\Requests\\ConfirmCodePasswordRequestModel.cs",
               "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Models\\Requests\\ConfirmCodePasswordRequestModel.cs",
@@ -42,12 +106,11 @@
               "RelativeToolTip": "br.vcadfinantial.project.api\\Models\\Requests\\ConfirmCodePasswordRequestModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T23:14:50.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T23:14:50.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\appsettings.json",
               "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\appsettings.json",
@@ -59,28 +122,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "br.vcadfinantial.project.application\\Services\\UserService.cs",
               "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\Services\\UserService.cs",
               "RelativeToolTip": "br.vcadfinantial.project.application\\Services\\UserService.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAYwNcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAArwLMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T21:53:00.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "RelativeToolTip": "br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAAwKAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T16:50:07.224Z",
               "EditorCaption": ""
             }
           ]
