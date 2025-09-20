@@ -103,6 +103,8 @@ app.UseCors(baseCorsPolicy);
 
 app.UseAuthorization();
 
+app.UseStaticFiles();
+
 app.MapControllers();
 
 app.Run();

@@ -164,3 +164,4 @@ C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.tests\obj\Debug\net
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.tests\obj\Debug\net8.0\br.vcadfinantial.project.tests.pdb
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.tests\obj\Debug\net8.0\br.vcadfinantial.project.tests.genruntimeconfig.cache
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.tests\obj\Debug\net8.0\ref\br.vcadfinantial.project.tests.dll
+C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.tests\bin\Debug\net8.0\br.vcadfinantial.project.api.staticwebassets.runtime.json

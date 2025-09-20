@@ -10,9 +10,11 @@ namespace br.vcadfinantial.project.domain.Interfaces.Services
     {
         Task<ResultSetImportArchive> ImportFile(DocumentDTO dto);
 
-        Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll();
+        Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll(AccountDTO dto);
 
         Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(AccountDTO dto);
+
+        Task<bool> InactiveAccount(AccountDTO dto);
 
     }
 

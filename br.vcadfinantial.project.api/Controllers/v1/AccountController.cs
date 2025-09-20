@@ -36,7 +36,7 @@ namespace br.vcadfinantial.project.api.Controllers.v1
                     BadRequest("Arquivo não encontrado.");
                 }
 
-                var dto = new DocumentDTO(requestModel.File, force);
+                var dto = new DocumentDTO(requestModel.File, force, int.Parse(requestModel.UserId));
                 var resultAsync = await _archiveService.ImportFile(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<ResultSetImportArchive>()
@@ -68,13 +68,14 @@ namespace br.vcadfinantial.project.api.Controllers.v1
         
         }
 
-        [HttpGet("Get"), MapToApiVersion("1.0")]
+        [HttpGet("GetAll/filter-search"), MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<IActionResult> Get(IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        public async Task<IActionResult> Get([FromQuery] GetAllAccountRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
         {
             try
             {
-                var resultAsync = await _archiveService.GetAll();
+                var dto = new AccountDTO(requestModel.AccountKey, int.Parse(requestModel.UserId));
+                var resultAsync = await _archiveService.GetAll(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<IEnumerable<DocumentAccountInfoAgreggate>>()
                 {
@@ -96,19 +97,55 @@ namespace br.vcadfinantial.project.api.Controllers.v1
 
         }
 
-        [HttpGet("{accountKey:long}"), MapToApiVersion("1.0")]
+        [HttpGet("Get/filter-search"), MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetByID(long accountKey, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        public async Task<IActionResult> GetByID([FromQuery] GetAllAccountRequestModel requestModel, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
         {
             try
             {
-                var dto = new AccountDTO(accountKey);
+                var dto = new AccountDTO(requestModel.AccountKey, int.Parse(requestModel.UserId));
                 var resultAsync = await _archiveService.GetByAccountKey(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<IEnumerable<DocumentAccountInfoAgreggate>>()
                 {
                     Success = true,
                     Data = resultAsync
+                });
+            }
+            catch (Exception ex)
+            {
+                var rt = new StatusCode200StandardResponseModel
+                {
+                    Success = false
+                };
+                rt.Errors.Add(new KeyValuePair<string, string>("error", ex.Message));
+
+                return Ok(rt);
+
+            }
+
+        }
+
+        [HttpDelete("{userId:int}"), MapToApiVersion("1.0")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Delete(int userId, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        {
+            try
+            {
+                var dto = new AccountDTO(0, userId);
+                var resultAsync = await _archiveService.InactiveAccount(dto);
+
+                if (!resultAsync)
+                {
+                    return BadRequest(new StatusCode200TypedResponseModel<bool>()
+                    {
+                        Success = resultAsync
+                    });
+                }
+
+                return Ok(new StatusCode200TypedResponseModel<bool>()
+                {
+                    Success = resultAsync
                 });
             }
             catch (Exception ex)

@@ -33,8 +33,7 @@ namespace br.vcadfinantial.project.application.Services
             catch (Exception ex)
             {
                 _logger.LogError($"[GetAccount] - Erro ao consultar o valor minímo e máximo de saldo: {ex.Message}");
-                throw;
-
+                throw new Exception();
             }
 
             return result;
@@ -51,8 +50,7 @@ namespace br.vcadfinantial.project.application.Services
             catch (Exception ex)
             {
                 _logger.LogError($"[GetBalance] - Erro ao consultar a contagem dos saldos: {ex.Message}");
-                throw;
-
+                throw new Exception();
             }
 
             return result;

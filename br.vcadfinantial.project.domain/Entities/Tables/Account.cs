@@ -24,6 +24,14 @@ namespace br.vcadfinantial.project.domain.Entities.Tables
         [Required]
         public decimal Among { get; set; }
 
+        [Column("active")]
+        [Required]
+        public bool Active { get; set; }
+
+        [Column("create_date")]
+        [Required]
+        public DateTime CreateDate { get; set; }
+
         [ForeignKey(nameof(IdDocument))]
         public Document Document { get; set; } = null!;
     }

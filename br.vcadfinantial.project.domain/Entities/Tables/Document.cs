@@ -35,9 +35,21 @@ namespace br.vcadfinantial.project.domain.Entities.Tables
         [MaxLength(100)]
         public required string FileName { get; set; }
 
+        [Column("created_by_user_id")]
+        [Required]
+        public int CreatedByUserId { get; set; }
+
         [Column("active")]
         [Required]
         public bool Active { get; set; }
+
+        [Column("create_date")]
+        [Required]
+        public DateTime CreateDate { get; set; }
+
+        [ForeignKey(nameof(CreatedByUserId))]
+        public User CreatedByUser { get; set; } = null!;
+
 
         public ICollection<Account> Accounts { get; set; } = new List<Account>();
     }

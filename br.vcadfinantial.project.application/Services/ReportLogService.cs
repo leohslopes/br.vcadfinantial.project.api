@@ -47,7 +47,7 @@ namespace br.vcadfinantial.project.application.Services
             catch (Exception ex)
             {
                 _logger.LogError($"[Export] - Erro ao baixar o relatório de log para o filtro {dto.MonthKey}: {ex.Message}");
-                throw;
+                throw new Exception();
 
             }
 

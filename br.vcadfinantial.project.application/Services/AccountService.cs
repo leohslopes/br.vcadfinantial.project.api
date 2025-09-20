@@ -87,7 +87,7 @@ namespace br.vcadfinantial.project.application.Services
                     })]
                 };
 
-                var existing = await _context.Document.FirstOrDefaultAsync(x => x.MounthKey.Equals(document.MounthKey) && x.Active);
+                var existing = await _context.Document.FirstOrDefaultAsync(x => x.MounthKey.Equals(document.MounthKey));
                 if (existing != null && !dto.Overwrite)
                 {
                     _logger.LogWarning($"Já existe um arquivo vigente para o código base {existing.MounthKey}. Arquivo recebido: {existing.FileName}");
@@ -115,7 +115,9 @@ namespace br.vcadfinantial.project.application.Services
                     MounthKey = document.MounthKey,
                     ShipmentType = document.ShipmentType,
                     FileName = dto.File.FileName,
-                    Active = true
+                    CreatedByUserId = dto.UserId,
+                    Active = true,
+                    CreateDate = DateTime.UtcNow
                 };
                 
                 await _documentRepository.AddAsync(tbDoc);
@@ -127,6 +129,8 @@ namespace br.vcadfinantial.project.application.Services
                         IdDocument = tbDoc.IdDocument,
                         AccountKey = account.AccountKey,
                         Among = account.Among,
+                        Active = true,
+                        CreateDate = DateTime.UtcNow
                     };
 
                     await _accountRepository.AddAsync(item);
@@ -153,18 +157,18 @@ namespace br.vcadfinantial.project.application.Services
             return result;
         }
 
-        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll()
+        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll(AccountDTO dto)
         {
             IEnumerable<DocumentAccountInfoAgreggate> result;
 
             try
             {
-                result = await _documentRepository.GetAll();
+                result = await _documentRepository.GetAll(dto.UserId);
             }
             catch (Exception ex)
             {
                 _logger.LogError($"[GetAll] - Erro fazer a consulta das contas: {ex.Message}");
-                throw;
+                throw new Exception();
             }
 
             return result;
@@ -176,12 +180,69 @@ namespace br.vcadfinantial.project.application.Services
 
             try
             {
-                result = await _documentRepository.GetByAccountKey(dto.AccountKey);
+                result = await _documentRepository.GetByAccountKey(dto.AccountKey, dto.UserId);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"[GetAll] - Erro fazer a consulta das contas: {ex.Message}");
-                throw;
+                _logger.LogError($"[GetByAccountKey] - Erro fazer a consulta por filtro do número da conta: {ex.Message}");
+                throw new Exception();
+            }
+
+            return result;
+        }
+
+        public async Task<bool> InactiveAccount(AccountDTO dto)
+        {
+            bool result = false;
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                _logger.LogInformation("Validando usuário no banco de dados.");
+
+                var existingUser = await _context.User.FirstOrDefaultAsync(x => x.ID.Equals(dto.UserId));
+                if (existingUser == null)
+                {
+                    _logger.LogWarning("Usuário não encontrado.");
+                    throw new ApplicationException($"Usuário não encontrado.");
+                }
+                _logger.LogInformation("Usuário no banco de dados validado com sucesso.");
+
+                _logger.LogInformation($"Inativando o documento atrelado ao usuário {existingUser?.FullName.ToUpper().Trim()}.");
+
+                var document = await _context.Document.FirstOrDefaultAsync(x => x.CreatedByUserId.Equals(dto.UserId) && x.Active);
+                if (document == null)
+                {
+                    _logger.LogWarning("Documento não encontrado.");
+                    throw new ApplicationException($"Documento não encontrado.");
+                }
+
+                document.Active = false;
+                await _documentRepository.UpdateAsync(document);
+
+                var accounts = await _context.Account.Where(x => x.IdDocument.Equals(document.IdDocument) && x.Active).ToListAsync();
+                if (accounts == null)
+                {
+                    _logger.LogWarning("Conta(s) não encontrada(s).");
+                    throw new ApplicationException($"Conta(s) não encontrada(s).");
+                }
+
+                foreach (var account in accounts)
+                {
+                    account.Active = false;
+                    await _accountRepository.UpdateAsync(account);
+                }
+
+                await transaction.CommitAsync();
+                _logger.LogInformation($"Documento atrelado ao usuário {existingUser?.FullName.ToUpper().Trim()} inativado com sucesso.");
+
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogError($"[InactiveAccount] - Erro ao inativar a(s) conta(s): {ex.Message}");
+                throw new Exception();
             }
 
             return result;

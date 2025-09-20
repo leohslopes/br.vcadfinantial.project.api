@@ -16,29 +16,6 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "b_document",
-                columns: table => new
-                {
-                    id_document = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    document_code = table.Column<int>(type: "int", nullable: false),
-                    official_number = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    mounth_key = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    shipment_type = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    file_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    active = table.Column<bool>(type: "tinyint(1)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_b_document", x => x.id_document);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "b_password_reset",
                 columns: table => new
                 {
@@ -78,6 +55,37 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "b_document",
+                columns: table => new
+                {
+                    id_document = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    document_code = table.Column<int>(type: "int", nullable: false),
+                    official_number = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    mounth_key = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    shipment_type = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    file_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    created_by_user_id = table.Column<int>(type: "int", nullable: false),
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    create_date = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_b_document", x => x.id_document);
+                    table.ForeignKey(
+                        name: "FK_b_document_b_user_created_by_user_id",
+                        column: x => x.created_by_user_id,
+                        principalTable: "b_user",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "b_account",
                 columns: table => new
                 {
@@ -85,7 +93,9 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     id_document = table.Column<int>(type: "int", nullable: false),
                     account_key = table.Column<long>(type: "bigint", nullable: false),
-                    among = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
+                    among = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    create_date = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,6 +115,11 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                 column: "id_document");
 
             migrationBuilder.CreateIndex(
+                name: "IX_b_document_created_by_user_id",
+                table: "b_document",
+                column: "created_by_user_id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_b_user_email",
                 table: "b_user",
                 column: "email",
@@ -121,10 +136,10 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                 name: "b_password_reset");
 
             migrationBuilder.DropTable(
-                name: "b_user");
+                name: "b_document");
 
             migrationBuilder.DropTable(
-                name: "b_document");
+                name: "b_user");
         }
     }
 }

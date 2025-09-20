@@ -170,3 +170,4 @@ C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\obj\Debug\net8.
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\obj\Debug\net8.0\br.vcadfinantial.project.api.genruntimeconfig.cache
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\obj\Debug\net8.0\ref\br.vcadfinantial.project.api.dll
 C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\obj\Debug\net8.0\br.vcadfinantial.project.api.MvcApplicationPartsAssemblyInfo.cs
+C:\DEV\br.vcadfinantial.project.api\br.vcadfinantial.project.api\bin\Debug\net8.0\br.vcadfinantial.project.api.staticwebassets.runtime.json

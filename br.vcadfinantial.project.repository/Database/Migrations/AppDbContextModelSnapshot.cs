@@ -35,9 +35,17 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("account_key");
 
+                    b.Property<bool>("Active")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("active");
+
                     b.Property<decimal>("Among")
                         .HasColumnType("decimal(65,30)")
                         .HasColumnName("among");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("create_date");
 
                     b.Property<int>("IdDocument")
                         .HasColumnType("int")
@@ -62,6 +70,14 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("tinyint(1)")
                         .HasColumnName("active");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("create_date");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int")
+                        .HasColumnName("created_by_user_id");
 
                     b.Property<int>("DocumentCode")
                         .HasColumnType("int")
@@ -92,6 +108,8 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                         .HasColumnName("shipment_type");
 
                     b.HasKey("IdDocument");
+
+                    b.HasIndex("CreatedByUserId");
 
                     b.ToTable("b_document");
                 });
@@ -175,6 +193,17 @@ namespace br.vcadfinantial.project.repository.Database.Migrations
                         .IsRequired();
 
                     b.Navigation("Document");
+                });
+
+            modelBuilder.Entity("br.vcadfinantial.project.domain.Entities.Tables.Document", b =>
+                {
+                    b.HasOne("br.vcadfinantial.project.domain.Entities.Tables.User", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CreatedByUser");
                 });
 
             modelBuilder.Entity("br.vcadfinantial.project.domain.Entities.Tables.Document", b =>

@@ -31,12 +31,12 @@ namespace br.vcadfinantial.project.repository.Repositories
             }
         }
 
-        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll()
+        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll(int userId)
         {
             IEnumerable<DocumentAccountInfoAgreggate> result;
 
             result = await _context.Account
-                         .Where(x => x.Document.Active)
+                         .Where(x => x.Document.Active && x.Active && x.Document.CreatedByUserId.Equals(userId))
                          .Select(y => new DocumentAccountInfoAgreggate
                          {
                              MounthKey = y.Document!.MounthKey,
@@ -50,12 +50,12 @@ namespace br.vcadfinantial.project.repository.Repositories
             return result;
         }
 
-        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(long accountKey)
+        public async Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(long accountKey, int userId)
         {
             IEnumerable<DocumentAccountInfoAgreggate> result;
 
             result = await _context.Account
-                         .Where(x => x.Document.Active && x.AccountKey.Equals(accountKey))
+                         .Where(x => x.Document.Active && x.Active && x.Document.CreatedByUserId.Equals(userId) && x.AccountKey.Equals(accountKey))
                          .Select(y => new DocumentAccountInfoAgreggate
                          {
                              MounthKey = y.Document!.MounthKey,

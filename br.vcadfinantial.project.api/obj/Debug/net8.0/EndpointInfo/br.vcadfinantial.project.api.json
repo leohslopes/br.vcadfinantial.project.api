@@ -25,18 +25,25 @@
             "multipart/form-data": {
               "schema": {
                 "required": [
-                  "File"
+                  "File",
+                  "UserId"
                 ],
                 "type": "object",
                 "properties": {
                   "File": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "UserId": {
+                    "type": "string"
                   }
                 }
               },
               "encoding": {
                 "File": {
+                  "style": "form"
+                },
+                "UserId": {
                   "style": "form"
                 }
               }
@@ -67,10 +74,29 @@
         }
       }
     },
-    "/api/v1/Account/Get": {
+    "/api/v1/Account/GetAll/filter-search": {
       "get": {
         "tags": [
           "Account"
+        ],
+        "parameters": [
+          {
+            "name": "AccountKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -96,19 +122,67 @@
         }
       }
     },
-    "/api/v1/Account/{accountKey}": {
+    "/api/v1/Account/Get/filter-search": {
       "get": {
         "tags": [
           "Account"
         ],
         "parameters": [
           {
-            "name": "accountKey",
-            "in": "path",
+            "name": "AccountKey",
+            "in": "query",
             "required": true,
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Account/{userId}": {
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],

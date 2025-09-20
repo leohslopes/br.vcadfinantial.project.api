@@ -39,4 +39,8 @@
     <ProjectReference Include="..\br.vcadfinantial.project.repository\br.vcadfinantial.project.repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

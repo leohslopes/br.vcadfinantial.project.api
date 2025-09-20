@@ -21,18 +21,28 @@ namespace br.vcadfinantial.project.repository.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Document>()
                 .HasKey(d => d.IdDocument);
 
             modelBuilder.Entity<Document>()
-                .HasMany(d => d.Accounts)   
-                .WithOne(a => a.Document)   
+                .HasMany(d => d.Accounts)
+                .WithOne(a => a.Document)
                 .HasForeignKey(a => a.IdDocument)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            
+            modelBuilder.Entity<Document>()
+                .HasOne(d => d.CreatedByUser)   
+                .WithMany()                     
+                .HasForeignKey(d => d.CreatedByUserId) 
+                .OnDelete(DeleteBehavior.Restrict);    
+
+            
             modelBuilder.Entity<Account>()
                 .HasKey(a => a.ID);
 
+            
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
@@ -41,7 +51,9 @@ namespace br.vcadfinantial.project.repository.Database
                 .Property(u => u.Photo)
                 .HasColumnType("MEDIUMBLOB");
 
-            modelBuilder.Entity<PasswordReset>().HasKey(p => p.Email);
+           
+            modelBuilder.Entity<PasswordReset>()
+                .HasKey(p => p.Email);
 
             base.OnModelCreating(modelBuilder);
         }

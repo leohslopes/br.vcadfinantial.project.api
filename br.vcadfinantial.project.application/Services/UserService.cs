@@ -101,16 +101,16 @@ namespace br.vcadfinantial.project.application.Services
 
                 if (existingUser == null)
                 {
-                    _logger.LogWarning("Credenciais inválidas!");
-                    throw new ApplicationException($"Credenciais inválidas!");
+                    _logger.LogWarning("Credenciais inválidas.");
+                    throw new ApplicationException($"Credenciais inválidas.");
                 }
 
                 var resultAuth = _passwordHasher.VerifyHashedPassword(existingUser, existingUser.Password, dto.Password);
 
                 if (resultAuth.Equals(PasswordVerificationResult.Failed))
                 {
-                    _logger.LogWarning("Credenciais inválidas!");
-                    throw new ApplicationException($"Credenciais inválidas!");
+                    _logger.LogWarning("Credenciais inválidas.");
+                    throw new ApplicationException($"Credenciais inválidas.");
                 }
 
                 result.Token = GenerateJwtToken(existingUser);
@@ -158,8 +158,8 @@ namespace br.vcadfinantial.project.application.Services
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                _logger.LogError($"[CreateUser] - Erro ao cadastrar o usuário: {ex.Message}");
-                throw;
+                _logger.LogError($"[UpdateUser] - Erro ao atualizar o usuário: {ex.Message}");
+                throw new Exception();
             }
 
             return result;
@@ -171,7 +171,6 @@ namespace br.vcadfinantial.project.application.Services
 
             try
             {
-
                 var existingUser = await _userRepository.GetByEmail(dto.Email);
                 if (existingUser == null)
                 {
@@ -189,20 +188,33 @@ namespace br.vcadfinantial.project.application.Services
                     EnableSsl = true
                 };
 
+                string htmlBody = BuildEmailBody(existingUser.FullName, code);
+
                 var mail = new MailMessage
                 {
                     From = new MailAddress(_configuration["Smtp:From"]),
-                    Subject = "Código de Recuperação de Senha",
-                    Body = $"Seu código de recuperação é: {code}",
-                    IsBodyHtml = false,
+                    Subject = "Código de Recuperação de Senha - VCADFINANTIAL",
+                    IsBodyHtml = true,
                 };
-
                 mail.To.Add(dto.Email);
+
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, null, "text/html");
+
+                string logoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "logo-vcadfinantial.png");
+                LinkedResource logo = new(logoPath, "image/png")
+                {
+                    ContentId = "LogoVcad"
+                };
+                htmlView.LinkedResources.Add(logo);
+
+                mail.AlternateViews.Add(htmlView);
+
                 await smtpClient.SendMailAsync(mail);
                 _logger.LogInformation($"Envio do código ao e-mail {dto.Email} feito com sucesso.");
 
                 _logger.LogInformation($"Inserindo o código do e-mail {dto.Email} na base.");
-                var passwordReset = new PasswordReset {
+                var passwordReset = new PasswordReset
+                {
                     Email = dto.Email,
                     ResetCode = code,
                     DateExpire = DateTime.UtcNow.AddMinutes(15)
@@ -251,7 +263,7 @@ namespace br.vcadfinantial.project.application.Services
 
                 _logger.LogInformation($"Atualizando a senha do usuário {existingUser.FullName.ToUpper().Trim()} no banco de dados.");
                 await _userRepository.UpdateAsync(existingUser); 
-                _logger.LogInformation($"Atualização da senha {existingUser.FullName.ToUpper().Trim()} feito com sucesso no banco de dados.");
+                _logger.LogInformation($"Atualização da senha do usuário {existingUser.FullName.ToUpper().Trim()} feito com sucesso no banco de dados.");
 
                 await transaction.CommitAsync();
                 result = true;
@@ -301,6 +313,42 @@ namespace br.vcadfinantial.project.application.Services
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private static string BuildEmailBody(string userName, string code)
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine("<!DOCTYPE html>");
+            sb.AppendLine("<html lang='pt-BR'>");
+            sb.AppendLine("<head>");
+            sb.AppendLine("    <meta charset='UTF-8'>");
+            sb.AppendLine("    <style>");
+            sb.AppendLine("        body { font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; margin: 0; padding: 20px; color: #333333; }");
+            sb.AppendLine("        .logo { text-align: center; margin-bottom: 20px; }");
+            sb.AppendLine("        .card { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }");
+            sb.AppendLine("        h2 { color: #004d66; }");
+            sb.AppendLine("        .code { font-size: 28px; font-weight: bold; color: #009999; margin: 20px 0; text-align: center; }");
+            sb.AppendLine("        p { font-size: 16px; line-height: 1.5; }");
+            sb.AppendLine("    </style>");
+            sb.AppendLine("</head>");
+            sb.AppendLine("<body>");
+            sb.AppendLine("    <div class='logo'>");
+            sb.AppendLine("        <img src='cid:LogoVcad' alt='VCADFINANTIAL' style='max-width:200px;'/>");
+            sb.AppendLine("    </div>");
+            sb.AppendLine("    <div class='card'>");
+            sb.AppendLine("        <h2>Seu código de acesso temporário</h2>");
+            sb.AppendLine($"        <p>Olá, {userName}.</p>");
+            sb.AppendLine("        <p>Recebemos uma solicitação para redefinição de senha da sua conta.</p>");
+            sb.AppendLine("        <p>Use o código abaixo para prosseguir:</p>");
+            sb.AppendLine($"        <div class='code'>{code}</div>");
+            sb.AppendLine("        <p>Este código expira em <strong>15 minutos</strong>. Se você não fez essa solicitação, pode ignorar este e-mail.</p>");
+            sb.AppendLine("        <p style='font-size:12px;color:#777;'>Não compartilhe este código com ninguém.</p>");
+            sb.AppendLine("    </div>");
+            sb.AppendLine("</body>");
+            sb.AppendLine("</html>");
+
+            return sb.ToString();
         }
 
     }
