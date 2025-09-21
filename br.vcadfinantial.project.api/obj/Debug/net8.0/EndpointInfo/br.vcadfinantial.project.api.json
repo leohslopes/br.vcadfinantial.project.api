@@ -210,10 +210,21 @@
         }
       }
     },
-    "/api/v1/Dashboard/GetAccount": {
+    "/api/v1/Dashboard/GetAccount/{userId}": {
       "get": {
         "tags": [
           "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -239,10 +250,21 @@
         }
       }
     },
-    "/api/v1/Dashboard/GetBalance": {
+    "/api/v1/Dashboard/GetBalance/{userId}": {
       "get": {
         "tags": [
           "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -280,6 +302,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],

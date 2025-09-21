@@ -8,5 +8,9 @@ namespace br.vcadfinantial.project.api.Models.Requests
         [Required(ErrorMessage = "Campo [monthKey] é obrigatório")]
         [JsonPropertyName("monthKey")]
         public required string MonthKey { get; set; }
+
+        [Required(ErrorMessage = "Campo [userId] é obrigatório")]
+        [JsonPropertyName("userId")]
+        public int UserId { get; set; }
     }
 }

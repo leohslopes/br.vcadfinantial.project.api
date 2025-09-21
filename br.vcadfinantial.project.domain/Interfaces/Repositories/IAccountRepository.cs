@@ -6,8 +6,8 @@ namespace br.vcadfinantial.project.domain.Interfaces.Repositories
 {
     public interface IAccountRepository : IBaseRepository<Account>
     {
-        Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccounts();
+        Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccounts(int userId);
 
-        Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalances();
+        Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalances(int userId);
     }
 }

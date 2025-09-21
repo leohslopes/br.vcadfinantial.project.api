@@ -6,12 +6,12 @@ namespace br.vcadfinantial.project.domain.Interfaces.Repositories
 {
     public interface IDocumentRepository : IBaseRepository<Document>
     {
-        Task InactivateDocumentsByMonth();
+        Task InactivateDocumentsByMonth(int userId);
 
         Task<IEnumerable<DocumentAccountInfoAgreggate>> GetAll(int userId);
 
         Task<IEnumerable<DocumentAccountInfoAgreggate>> GetByAccountKey(long accountKey, int userId);
 
-        Task<IEnumerable<ReportLogInfoAgreggate>> GetReport(string mounthKey);
+        Task<IEnumerable<ReportLogInfoAgreggate>> GetReport(string mounthKey, int userId);
     }
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace br.vcadfinantial.project.domain.DTO
 {
-    public record ReportLogDTO(string MonthKey, int UserId);
+    public record DashboardDTO(int UserId);
 }

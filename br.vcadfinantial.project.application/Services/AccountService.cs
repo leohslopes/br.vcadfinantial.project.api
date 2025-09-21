@@ -87,7 +87,7 @@ namespace br.vcadfinantial.project.application.Services
                     })]
                 };
 
-                var existing = await _context.Document.FirstOrDefaultAsync(x => x.MounthKey.Equals(document.MounthKey));
+                var existing = await _context.Document.FirstOrDefaultAsync(x => x.MounthKey.Equals(document.MounthKey) && x.CreatedByUserId.Equals(dto.UserId));
                 if (existing != null && !dto.Overwrite)
                 {
                     _logger.LogWarning($"Já existe um arquivo vigente para o código base {existing.MounthKey}. Arquivo recebido: {existing.FileName}");
@@ -95,16 +95,16 @@ namespace br.vcadfinantial.project.application.Services
                 }
                 else if(dto.Overwrite) 
                 {
-                    _logger.LogInformation($"Removendo o histórico do arquivo passado. Mês base{existing.MounthKey}");
+                    _logger.LogInformation($"Removendo o histórico do arquivo passado. Mês base {existing.MounthKey}");
                     await _accountRepository.DeleteAsync(existing.IdDocument);
                     await _documentRepository.DeleteAsync(existing.IdDocument);
-                    _logger.LogInformation($"Histórico do arquivo passado removido com sucesso. Mês base{existing.MounthKey}");
+                    _logger.LogInformation($"Histórico do arquivo passado removido com sucesso. Mês base {existing.MounthKey}");
 
                 }
                 _logger.LogInformation("Consumo do arquivo XML de contas finalizado com sucesso.");
 
                 _logger.LogInformation("Inativando arquivos vigentes anteriores.");
-                await _documentRepository.InactivateDocumentsByMonth();
+                await _documentRepository.InactivateDocumentsByMonth(dto.UserId);
                 _logger.LogInformation("Arquivos vigentes anteriores inativos com sucesso");
 
                 _logger.LogInformation("Inserindo registros no banco de dados.");
@@ -275,7 +275,30 @@ namespace br.vcadfinantial.project.application.Services
             int totalRows = document.Accounts.Count + 1;
             var tableRange = worksheet.Range(1, 1, totalRows, 6);
             var table = tableRange.CreateTable();
-            table.Theme = XLTableTheme.TableStyleMedium9;
+
+            
+            var petrol = XLColor.FromHtml("#197C89");
+            var blue = XLColor.FromHtml("#5BC8B2");
+
+            table.Theme = XLTableTheme.None;
+            var headerRow = tableRange.Row(1);
+            headerRow.Style.Fill.BackgroundColor = petrol;
+            headerRow.Style.Font.FontColor = XLColor.White;
+            headerRow.Style.Font.Bold = true;
+            headerRow.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            for (int i = 2; i <= totalRows; i++)
+            {
+                var rowRange = worksheet.Range(i, 1, i, 6);
+                if (i % 2 == 0)
+                {
+                    rowRange.Style.Fill.BackgroundColor = blue;
+                }
+                else
+                {
+                    rowRange.Style.Fill.BackgroundColor = XLColor.White;
+                }
+            }
 
             worksheet.Columns().AdjustToContents();
 

@@ -14,13 +14,13 @@ namespace br.vcadfinantial.project.repository.Repositories
 
         }
 
-        public async Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccounts()
+        public async Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccounts(int userId)
         {
             IEnumerable<AccountMinMaxInfoAgreggate> result;
 
             var max = _context.Account
                       .Include(x => x.Document)
-                      .Where(x => x.Document.Active == true && x.Among != 0)
+                      .Where(x => x.Document.Active && x.Active && x.Among != 0 && x.Document.CreatedByUserId.Equals(userId))
                       .OrderByDescending(x => x.Among)
                       .Select(y => new AccountMinMaxInfoAgreggate
                       {
@@ -47,13 +47,13 @@ namespace br.vcadfinantial.project.repository.Repositories
             return result;
         }
 
-        public async Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalances()
+        public async Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalances(int userId)
         {
             IEnumerable<AccountBalanceCategoryInfoAgreggate> result;
 
             var totalCount = await _context.Account.CountAsync();
             var grouped = await _context.Account
-                         .Where(x => x.Document.Active == true)
+                         .Where(x => x.Document.Active && x.Active && x.Among != 0 && x.Document.CreatedByUserId.Equals(userId))
                          .GroupBy(y => y.Among == 0 ? "Igual a Zero" :
                                   y.Among > 0 ? "Maior que Zero" :
                                   "Menor que Zero")

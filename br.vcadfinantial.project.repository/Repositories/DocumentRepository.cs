@@ -14,19 +14,27 @@ namespace br.vcadfinantial.project.repository.Repositories
 
         }
 
-        public async Task InactivateDocumentsByMonth()
+        public async Task InactivateDocumentsByMonth(int userId)
         {
-            var activesDocs = await _context.Document.Where(x => x.Active).ToListAsync();
+            var activesDocs = await _context.Document.Where(x => x.Active && x.CreatedByUserId.Equals(userId)).ToListAsync();
+            
 
             if (activesDocs.Count > 0)
             {
                 foreach (var activesDoc in activesDocs)
                 {
                     activesDoc.Active = false;
+                    var activesAccounts = await _context.Account.Where(x => x.Active && x.IdDocument.Equals(activesDoc.IdDocument)).ToListAsync();
+
+                    foreach (var activesAccount in activesAccounts)
+                    {
+                        activesAccount.Active = false;
+                    }
+
+                    _context.Account.UpdateRange(activesAccounts);
                 }
 
                 _context.Document.UpdateRange(activesDocs);
-
                 await _context.SaveChangesAsync();
             }
         }
@@ -69,12 +77,12 @@ namespace br.vcadfinantial.project.repository.Repositories
             return result;
         }
 
-        public async Task<IEnumerable<ReportLogInfoAgreggate>> GetReport(string mounthKey)
+        public async Task<IEnumerable<ReportLogInfoAgreggate>> GetReport(string mounthKey, int userId)
         {
             IEnumerable<ReportLogInfoAgreggate> result;
 
             result = await _context.Account
-                    .Where(x => x.Document.MounthKey.Equals(mounthKey))
+                    .Where(x => x.Document.MounthKey.Equals(mounthKey) && x.Document.CreatedByUserId.Equals(userId))
                     .Select(y => new ReportLogInfoAgreggate
                     {
                         MounthKey = y.Document.MounthKey,

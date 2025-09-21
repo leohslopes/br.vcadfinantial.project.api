@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\DEV\\br.vcadfinantial.project.api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\controllers\\v1\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|solutionrelative:br.vcadfinantial.project.api\\controllers\\v1\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|solutionrelative:br.vcadfinantial.project.application\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\controllers\\v1\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|solutionrelative:br.vcadfinantial.project.api\\controllers\\v1\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6CA673C-099A-4942-8EE7-DBAF8527C6E7}|br.vcadfinantial.project.repository\\br.vcadfinantial.project.repository.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6CA673C-099A-4942-8EE7-DBAF8527C6E7}|br.vcadfinantial.project.repository\\br.vcadfinantial.project.repository.csproj|solutionrelative:br.vcadfinantial.project.repository\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\interfaces\\repositories\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\interfaces\\repositories\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\interfaces\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\interfaces\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\dto\\dashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\dto\\dashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBC3E1F0-12E4-454F-9920-0B1B93D0DD16}|br.vcadfinantial.project.application\\br.vcadfinantial.project.application.csproj|solutionrelative:br.vcadfinantial.project.application\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\controllers\\v1\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|solutionrelative:br.vcadfinantial.project.api\\controllers\\v1\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D6CA673C-099A-4942-8EE7-DBAF8527C6E7}|br.vcadfinantial.project.repository\\br.vcadfinantial.project.repository.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\repositories\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6CA673C-099A-4942-8EE7-DBAF8527C6E7}|br.vcadfinantial.project.repository\\br.vcadfinantial.project.repository.csproj|solutionrelative:br.vcadfinantial.project.repository\\repositories\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\interfaces\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\interfaces\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\controllers\\v1\\reportlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A09C5E3C-C4DE-4E6F-A4ED-43BCA56FFC07}|br.vcadfinantial.project.api\\br.vcadfinantial.project.api.csproj|solutionrelative:br.vcadfinantial.project.api\\controllers\\v1\\reportlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\dto\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\dto\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\interfaces\\repositories\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\interfaces\\repositories\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|c:\\dev\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\dto\\reportlogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{548BB582-AE1B-46AD-ABCB-CCC987AC589A}|br.vcadfinantial.project.domain\\br.vcadfinantial.project.domain.csproj|solutionrelative:br.vcadfinantial.project.domain\\dto\\reportlogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,80 +62,145 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "RelativeToolTip": "br.vcadfinantial.project.api\\Controllers\\v1\\UserController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC8AAAATAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\DashboardController.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Controllers\\v1\\DashboardController.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\DashboardController.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.api\\Controllers\\v1\\DashboardController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAACAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T01:54:30.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Services\\IAccountService.cs",
-              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\Interfaces\\Services\\IAccountService.cs",
-              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Services\\IAccountService.cs",
-              "RelativeToolTip": "br.vcadfinantial.project.domain\\Interfaces\\Services\\IAccountService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T01:37:45.516Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AccountDTO.cs",
-              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\DTO\\AccountDTO.cs",
-              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\DTO\\AccountDTO.cs",
-              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\DTO\\AccountDTO.cs",
-              "RelativeToolTip": "br.vcadfinantial.project.domain\\DTO\\AccountDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T01:01:25.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DocumentRepository.cs",
-              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
-              "RelativeDocumentMoniker": "br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
-              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
-              "RelativeToolTip": "br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwDkAAACRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T00:51:17.632Z",
+              "WhenOpened": "2025-09-21T00:28:06.639Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
-              "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
-              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
-              "RelativeToolTip": "br.vcadfinantial.project.api\\Controllers\\v1\\AccountController.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAowIYAAAAQAAAAAAAAAA==",
+              "Title": "DashboardService.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\Services\\DashboardService.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.application\\Services\\DashboardService.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\Services\\DashboardService.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.application\\Services\\DashboardService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T00:38:54.201Z",
+              "WhenOpened": "2025-09-21T00:25:58.52Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "AccountRepository.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\Repositories\\AccountRepository.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.repository\\Repositories\\AccountRepository.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\Repositories\\AccountRepository.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.repository\\Repositories\\AccountRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowDcAAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T00:23:27.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IAccountRepository.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IAccountRepository.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IAccountRepository.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IAccountRepository.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IAccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T00:23:07.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IDashboardService.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Services\\IDashboardService.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\Interfaces\\Services\\IDashboardService.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Services\\IDashboardService.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.domain\\Interfaces\\Services\\IDashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T00:22:27.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DashboardDTO.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\DTO\\DashboardDTO.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\DTO\\DashboardDTO.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\DTO\\DashboardDTO.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.domain\\DTO\\DashboardDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-21T00:21:42.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DocumentRepository.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.repository\\Repositories\\DocumentRepository.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAIwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T23:37:45.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AccountService.cs",
               "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "br.vcadfinantial.project.application\\Services\\AccountService.cs",
               "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.application\\Services\\AccountService.cs",
               "RelativeToolTip": "br.vcadfinantial.project.application\\Services\\AccountService.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAAwwOsAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAwwB4BAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T00:21:34.88Z",
+              "WhenOpened": "2025-09-20T23:34:23.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDocumentRepository.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IDocumentRepository.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IDocumentRepository.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IDocumentRepository.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.domain\\Interfaces\\Repositories\\IDocumentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T23:32:19.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReportLogController.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\ReportLogController.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.api\\Controllers\\v1\\ReportLogController.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.api\\Controllers\\v1\\ReportLogController.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.api\\Controllers\\v1\\ReportLogController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAgwCgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T23:07:29.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReportLogDTO.cs",
+              "DocumentMoniker": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\DTO\\ReportLogDTO.cs",
+              "RelativeDocumentMoniker": "br.vcadfinantial.project.domain\\DTO\\ReportLogDTO.cs",
+              "ToolTip": "C:\\DEV\\br.vcadfinantial.project.api\\br.vcadfinantial.project.domain\\DTO\\ReportLogDTO.cs",
+              "RelativeToolTip": "br.vcadfinantial.project.domain\\DTO\\ReportLogDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T23:04:26.751Z",
               "EditorCaption": ""
             }
           ]

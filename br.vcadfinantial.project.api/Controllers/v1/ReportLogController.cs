@@ -29,7 +29,7 @@ namespace br.vcadfinantial.project.api.Controllers.v1
         {
             try
             {
-                var dto = new ReportLogDTO(requestModel.MonthKey);
+                var dto = new ReportLogDTO(requestModel.MonthKey, requestModel.UserId);
                 var resultAsync = await _reportLogService.Export(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<string>()

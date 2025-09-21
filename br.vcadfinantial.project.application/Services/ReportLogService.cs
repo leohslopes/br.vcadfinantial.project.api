@@ -31,7 +31,7 @@ namespace br.vcadfinantial.project.application.Services
 
             try
             {
-                var datas = await _documentRepository.GetReport(dto.MonthKey);
+                var datas = await _documentRepository.GetReport(dto.MonthKey, dto.UserId);
 
                 if (datas != null && datas.Count() == 0)
                 {

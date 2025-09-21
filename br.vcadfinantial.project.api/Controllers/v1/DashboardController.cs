@@ -1,5 +1,6 @@
 ﻿using br.vcadfinantial.project.api.Models.Responses;
 using br.vcadfinantial.project.domain.Agreggate;
+using br.vcadfinantial.project.domain.DTO;
 using br.vcadfinantial.project.domain.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -22,13 +23,14 @@ namespace br.vcadfinantial.project.api.Controllers.v1
             _dashboardService = dashboardService;
         }
 
-        [HttpGet("GetAccount"), MapToApiVersion("1.0")]
+        [HttpGet("GetAccount/{userId:int}"), MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAccount(IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        public async Task<IActionResult> GetAccount(int userId, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
         {
             try
             {
-                var resultAsync = await _dashboardService.GetAccount();
+                var dto = new DashboardDTO(userId);
+                var resultAsync = await _dashboardService.GetAccount(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<IEnumerable<AccountMinMaxInfoAgreggate>>()
                 {
@@ -50,13 +52,14 @@ namespace br.vcadfinantial.project.api.Controllers.v1
 
         }
 
-        [HttpGet("GetBalance"), MapToApiVersion("1.0")]
+        [HttpGet("GetBalance/{userId:int}"), MapToApiVersion("1.0")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetBalance(IOptions<ApiBehaviorOptions> apiBehaviorOptions)
+        public async Task<IActionResult> GetBalance(int userId, IOptions<ApiBehaviorOptions> apiBehaviorOptions)
         {
             try
             {
-                var resultAsync = await _dashboardService.GetBalance();
+                var dto = new DashboardDTO(userId);
+                var resultAsync = await _dashboardService.GetBalance(dto);
 
                 return Ok(new StatusCode200TypedResponseModel<IEnumerable<AccountBalanceCategoryInfoAgreggate>>()
                 {

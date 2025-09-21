@@ -1,4 +1,5 @@
 ﻿using br.vcadfinantial.project.domain.Agreggate;
+using br.vcadfinantial.project.domain.DTO;
 using br.vcadfinantial.project.domain.Interfaces.Repositories;
 using br.vcadfinantial.project.domain.Interfaces.Services;
 using br.vcadfinantial.project.repository.Database;
@@ -22,13 +23,13 @@ namespace br.vcadfinantial.project.application.Services
             _accountRepository = accountRepository;
         }
 
-        public async Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccount()
+        public async Task<IEnumerable<AccountMinMaxInfoAgreggate>> GetAccount(DashboardDTO dto)
         {
             IEnumerable<AccountMinMaxInfoAgreggate> result;
 
             try
             {
-                result = await _accountRepository.GetAccounts();
+                result = await _accountRepository.GetAccounts(dto.UserId);
             }
             catch (Exception ex)
             {
@@ -39,13 +40,13 @@ namespace br.vcadfinantial.project.application.Services
             return result;
         }
 
-        public async Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalance()
+        public async Task<IEnumerable<AccountBalanceCategoryInfoAgreggate>> GetBalance(DashboardDTO dto)
         {
             IEnumerable<AccountBalanceCategoryInfoAgreggate> result;
 
             try
             {
-                result = await _accountRepository.GetBalances();
+                result = await _accountRepository.GetBalances(dto.UserId);
             }
             catch (Exception ex)
             {
